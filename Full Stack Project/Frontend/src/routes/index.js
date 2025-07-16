@@ -1,7 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "../Component/Layout";
 
 const HomeLayout = React.lazy(() => import('../Layout/Home'));
 const ContactLayout = React.lazy(() => import('../Layout/Contact'));
@@ -21,13 +22,13 @@ function Routers() {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
 
-    window.addEventListener('online',handleOnline);
-    window.addEventListener('offline',handleOffline);
-    return(
-      window.removeEventListener('online',handleOnline),
-      window.removeEventListener('offline',handleOffline)
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    return (
+      window.removeEventListener('online', handleOnline),
+      window.removeEventListener('offline', handleOffline)
     )
-  },[]);
+  }, []);
 
   return (
     // <Router>
@@ -48,12 +49,15 @@ function Routers() {
     //   )}
     // </Router>
     <Router>
-        <Routes>
+      <Routes>
         <Route path="/" element={<LoginLayout />} />
         <Route path="/register" element={<RegisterLayout />} />
         <Route path="/forgot" element={< ForgotLayout />} />
-        <Route path='/home' element={<HomeLayout /> } />
-        <Route path="/contact" element={<ContactLayout />} />
+        <Route element={<PrivateRoutes />}>
+          <Route element={<Layout />}>
+            <Route path='/home' element={<HomeLayout />} />
+            <Route path="/contact" element={<ContactLayout />} /></Route>
+        </Route>
         <Route path="/userDetails" element={<UserDetailsLayout />} />
         <Route path="*" element={<NotFoundLayout />} />
         <Route path="/offline" element={<OffLineLayout />} />
