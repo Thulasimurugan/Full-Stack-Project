@@ -19,6 +19,7 @@ import { SlChemistry } from 'react-icons/sl';
 import { LiaFlagUsaSolid } from 'react-icons/lia';
 import { TbRotate3D } from 'react-icons/tb';
 import Axios  from 'axios';
+import Footer from "../Footer";
 import { useState, useEffect } from 'react';
 
 function Home() {
@@ -26,22 +27,22 @@ function Home() {
     const [details, setDetails] = useState([]);
     const [role, setRole] = useState("");
 
-    useEffect(() => {
-        const userEmail = {
-            email: localStorage.getItem("email").toLowerCase(),
-            token: localStorage.getItem("userToken"),
-        }
-        const fetchData = async () => {
-            try{
-                const userDetails = await Axios.post("http://127.0.0.1:5000/vitamins/generateOneUser", userEmail);
-                setDetails(userDetails);
-                userDetails.data.status === 200 && userDetails.data.userData.length > 0 ? setRole(userDetails.data.userData[0].role) : setRole("CUSTOMER");
-            } catch(error){
-                console.log(error);
-            }
-        } 
-        fetchData();
-    },[]);
+    // useEffect(() => {
+    //     const userEmail = {
+    //         email: localStorage.getItem("email").toLowerCase(),
+    //         token: localStorage.getItem("userToken"),
+    //     }
+    //     const fetchData = async () => {
+    //         try{
+    //             const userDetails = await Axios.post("http://127.0.0.1:5000/vitamins/generateOneUser", userEmail);
+    //             setDetails(userDetails);
+    //             userDetails.data.status === 200 && userDetails.data.userData.length > 0 ? setRole(userDetails.data.userData[0].role) : setRole("CUSTOMER");
+    //         } catch(error){
+    //             console.log(error);
+    //         }
+    //     } 
+    //     fetchData();
+    // },[]);
 
     return (
         <>
@@ -392,48 +393,6 @@ ingredients for high quality products!"/>
                 </div>
             </Col>
             </Row>
-        </div>
-        <div className='d-flex justify-content-center w-100 m-0 p-0' style={{background:'#17414F'}}>
-           <Row className='d-flex justify-content-center align-items-center w-75 m-0 p-0'>
-                <Col className='d-flex m-0 p-0 px-xl-3 px-lg-2 px-md-2 px-sm-3 px-1 mt-xl-4 mt-lg-4 mt-md-3 mt-sm-3 mt-3' xl={4} lg={4} md={6}>
-                    <div className='rounded-3 d-flex m-0 p-0 w-100' style={{background:'#215D72'}}>
-                        <div className='d-flex justify-content-center align-items-center w-25 px-xl-5 m-0 p-0 d-flex'>
-                            <h1 className='m-0 p-0 mt-1 mb-2' style={{fontSize:'40px',color:'#FFFFFF'}}><FaMobile/></h1>
-                        </div>
-                        <div className='w-75 flex-column m-0 p-0'>
-                            <p className='m-0 p-0 mt-3'style={{fontSize:'13px',color:'#FFFFFF'}}>Phone Number</p>
-                            <p className='m-0 p-0 mb-3 fw-bolder'style={{fontSize:'13px',color:'#FFFFFF'}}>+8807648750</p>
-                        </div>
-                    </div>
-                </Col>
-                <Col className='m-0 p-0 px-xl-3 px-lg-2 px-md-2 px-sm-3 px-1 mt-xl-4 mt-lg-4 mt-md-3 mt-sm-3 mt-3' xl={4} lg={4} md={6} sm={12}>
-                    <div className='rounded-3 d-flex m-0 p-0 w-100' style={{background:'#215D72'}}>
-                        <div className='d-flex justify-content-center align-items-center w-25 px-xl-5 m-0 p-0 d-flex'>
-                            <h1 className='m-0 p-0 mt-1 mb-2' style={{fontSize:'40px',color:'#FFFFFF'}}><MdMarkEmailUnread /></h1>
-                        </div>
-                        <div className='w-75 flex-column m-0 p-0'>
-                            <p className='m-0 p-0 mt-3'style={{fontSize:'13px',color:'#FFFFFF'}}>Email Address</p>
-                            <p className='m-0 p-0 mb-3 fw-bolder'style={{fontSize:'13px',color:'#FFFFFF'}}>Bmthulasi51@gmail.com</p>
-                        </div>
-                    </div>
-                </Col>
-                <Col className='d-flex m-0 p-0 px-xl-3 px-lg-2 px-md-2 px-sm-3 px-1 mt-xl-4 mt-lg-4 mt-md-3 mt-sm-3 mt-3' xl={4} lg={4} md={6} sm={12}>
-                    <div className='rounded-3 d-flex m-0 p-0 w-100' style={{background:'#215D72'}}>
-                        <div className='d-flex justify-content-center align-items-center w-25 px-xl-5 m-0 p-0 d-flex'>
-                            <h1 className='m-0 p-0 mt-1 mb-2' style={{fontSize:'40px',color:'#FFFFFF'}}><FaMapLocationDot /></h1>
-                        </div>
-                        <div className='w-75 flex-column m-0 p-0'>
-                            <p className='m-0 p-0 mt-3'style={{fontSize:'13px',color:'#FFFFFF'}}>Office Location</p>
-                            <p className='m-0 p-0 fw-bolder mb-3'style={{fontSize:'13px',color:'#FFFFFF'}}>Ambassador Street</p>
-                        </div>
-                    </div>
-                </Col>
-                <Col className=' mt-3 d-flex m-0 p-0' xl={12} xs={12}>
-                    <div className='w-100 m-0 p-0 d-flex flex-column px-xl-3 px-lg-2 px-md-2 px-sm-3 px-2 mb-5'>
-                        <p className='d-flex p-0 m-0 fs-6' style={{color:'#FFFFFF'}}>Your Health, physical and emotional well-being is important to us. We are always by your side and have made it even easier for you to find the necessary vitamins</p>
-                    </div>
-                </Col>
-           </Row>
         </div>
         </div>
         </>

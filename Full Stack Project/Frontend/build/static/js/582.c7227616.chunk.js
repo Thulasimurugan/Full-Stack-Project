@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkhospital=self.webpackChunkhospital||[]).push([[582],{1582:(s,t,e)=>{e.r(t),e.d(t,{default:()=>c});var u=e(6580),a=e(7391),n=e(579);const c=function(){return a.A.isAuthenticatedUser()?(0,n.jsx)(u.sv,{}):(0,n.jsx)(u.C5,{to:"/"})}}}]);
+//# sourceMappingURL=582.c7227616.chunk.js.map
