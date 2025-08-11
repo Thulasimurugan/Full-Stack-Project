@@ -27,12 +27,13 @@ function Footer() {
             quickIcons: <GiHealthCapsule className="fs-5" />
         },
         {
-            quickName: 'Contact',
+            quickName: 'Contact Us',
             quickUrls: '/contact',
             quickIcons: <CiMobile3 className="fs-5" />
         },
         {
             quickName: 'About Us',
+            quickUrls: '/about',
             quickIcons: <CiCircleInfo className="fs-5" />
         },
     ]
@@ -96,7 +97,7 @@ function Footer() {
                                 <p className="w-100 m-0 p-0 text-light fs-5 fw-bolder">Quick Links</p>
                                 <div className="m-0 mt-2 d-flex flex-column">
                                     {quickLinks.map((quick, index) => (
-                                        <Link key={index} to={quick.quickUrls} className="d-flex align-items-center m-0 py-1 gap-2 text-decoration-none">
+                                        <Link key={index} onClick={() => window.location.href = `${quick.quickUrls}`} className="d-flex align-items-center m-0 py-1 gap-2 text-decoration-none">
                                             <span className="p-0 m-0 d-flex text-light">{quick.quickIcons}</span>
                                             <span className="p-0 m-0 d-flex text-light">{quick.quickName}</span>
                                         </Link>
@@ -111,7 +112,7 @@ function Footer() {
                                     {ourProducts.map((product, index) => (
                                         <Link key={index} to={product.quickUrls} className="d-flex align-items-center m-0 py-1 gap-2 text-decoration-none">
                                             <span className="p-0 m-0 d-flex text-light">{product.quickIcons}</span>
-                                            <span className="p-0 m-0 d-flex text-light">{product.quickName}</span>
+                                            <span className="p-0 m-0 d-flex text-light" onClick={() => window.location.reload}>{product.quickName}</span>
                                         </Link>
                                     ))}
                                 </div>
