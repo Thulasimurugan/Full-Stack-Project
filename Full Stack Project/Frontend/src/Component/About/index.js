@@ -3,13 +3,19 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { CiCalendar } from "react-icons/ci";
 import aboutBackground from "../../Assets/Images/aboutBackground.jpeg";
 import aboutBackground1 from "../../Assets/Images/aboutPicture.png";
-import { FaHandshake } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+import { FaFacebookF, FaHandshake, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaRegHandshake, FaEye } from "react-icons/fa";
 import aboutHeart from "../../Assets/Images/aboutHeart.jpg";
 import lapTesting from "../../Assets/Images/lapTesting.jpg";
 import aboutHeart1 from "../../Assets/Images/aboutHeart(1).jpg";
 import aboutLugs from "../../Assets/Images/aboutLugs.jpeg";
-import userProfile from '../../Assets/Images/userProfile1.png';
+import userProfile from "../../Assets/Images/userProfile1.png";
+import doctorProfile1 from "../../Assets/Images/doctorProfile1.png";
+import doctorProfile2 from "../../Assets/Images/doctorProfile2.png";
+import doctorProfile3 from "../../Assets/Images/doctorProfile3.png";
+import doctorProfile4 from "../../Assets/Images/doctorProfile4.png";
+import doctorGroups from "../../Assets/Images/doctorGroup.png";
 
 function About() {
     const [position, setPosition] = useState(getPosition());
@@ -51,26 +57,31 @@ function About() {
 
     const expertDoctor = [
         {
-            profile: userProfile,
+            profile: doctorProfile1,
             name: 'Robert Hentry',
-            role: 'Chief Medical Officer & Integrative Medicine Specialist'
+            role: 'Chief Medical Officer & Integrative Medicine Specialist',
+            doctorSocial: [<FaFacebookF />, <BsTwitterX />, <FaLinkedinIn />, <FaInstagram />]
         },
         {
-            profile: userProfile,
+            profile: doctorProfile2,
             name: 'Sarah Taylor',
             role: "Women's Health & Reproductive Wellness specialist",
+            doctorSocial: [<FaFacebookF />, <BsTwitterX />, <FaLinkedinIn />, <FaInstagram />]
         },
         {
-            profile: userProfile,
+            profile: doctorProfile3,
             name: 'Trent Blake',
-            role: 'Senior Consultant - Internal Medicine & Ayurveda'
+            role: 'Senior Consultant - Internal Medicine & Ayurveda',
+            doctorSocial: [<FaFacebookF />, <BsTwitterX />, <FaLinkedinIn />, <FaInstagram />]
         },
         {
-            profile: userProfile,
+            profile: doctorProfile4,
             name: 'Jos Butler',
-            role: 'Orthopedic Surgeon & Ayurvedic Pain Management Specialist'
+            role: 'Orthopedic Surgeon & Ayurvedic Pain Management Specialist',
+            doctorSocial: [<FaFacebookF />, <BsTwitterX />, <FaLinkedinIn />, <FaInstagram />]
         }
-    ]
+    ];
+
 
     function getPosition() {
         if (window.innerWidth >= 768) {
@@ -131,7 +142,7 @@ function About() {
                     <div className="m-0 p-0 w-100 position-relative d-flex align-items-center" style={{ backgroundColor: '#003569' }}>
                         <div className={`m-0 w-100 d-flex ${position} px-5 flex-column`} style={{ zIndex: 2 }}>
                             <p className="m-0 p-0 px-md-3 fw-bolder text-light"> OUR MISSION & VISION & PROMISE_______</p>
-                            <p className="mt-2 p-0 px-md-3 d-flex fw-bold fs-2 text-light">Discover The Core Principles That Guides Us</p>
+                            <p className="mt-2 p-0 px-md-3 d-flex fw-bold fs-2" style={{color: "#727272"}}>Discover The Core Principles That Guides Us</p>
                             <Row className="mt-md-4 mt-2 mx-0 my-0 mb-0 p-0 d-flex w-100">
                                 {our.map((value, index) => (
                                     <Col key={index} className="m-0 px-xl-3 px-md-3 py-4 py-md-0 px-0 d-flex" xxl={4} xl={4} lg={4} md={4} xs={12}>
@@ -202,16 +213,36 @@ function About() {
                     </div>
                 </Col>
             </Row>
-            <Row className="m-0 p-5 d-flex bg-warning">
+            <Row className="m-0 p-5 d-flex">
                 {expertDoctor.map((value, index) => (
-                    <Col key={index} className="m-0 p-0 px-md-3 d-flex" xxl={3} xl={3} lg={3} md={3} sm={12} xs={12}>
+                    <Col key={index} className="mt-4 mb-5 mb-sm-0 p-0 px-sm-3 d-flex" xxl={3} xl={3} lg={3} md={6} sm={6} xs={12}>
                         <div className="m-0 p-0 d-flex w-100 justify-content-center align-items-center flex-column position-relative h-100" style={{ backgroundColor: '#17414F' }}>
-                            <img src={value.profile} className="rounded-circle border border-3 border-light p-0 d-flex" style={{top:'30px',height: '60px', width: '60px'}} alt="userProfile" />
-                            {/* <p className="mt-2 mb-0 p-0 text-light fw-bolder fs-5  w-100 text-center">{value.name}</p>
-                            <p className="mt-1 mb-1 px-4 d-flex text-light fw-bolder text-center">{value.role}</p> */}
+                            <img src={value.profile} className="rounded-circle m-0 p-0 d-flex position-absolute" style={{ top: '-50px', height: '100px', width: '100px'}} alt="expertDoctor.profile" />
+                            <div className="mt-5 mb-5 mb-md-0 mx-0 my-0 p-0 w-100">
+                                <p className="mt-3 mb-0 p-0 text-light fw-bolder fs-5  w-100 text-center">{value.name}</p>
+                                <p className="mt-2 mb-1 px-4 text-light fw-bolder text-center">{value.role}</p>
+                                <div className="d-flex flex-rows gap-3 m-0 pt-4 pb-0 p-md-4 justify-content-center">
+                                    {value.doctorSocial.map((icons, index) => (
+                                        <p className="bg-light m-0 px-2 py-2 d-flex rounded-circle fw-bolder" style={{color:'#003569', cursor:'pointer'}} key={index}>{icons}</p>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </Col>
                 ))}
+            </Row>
+            <Row className="m-0 p-0 d-flex">
+                <Col className="m-0 p-0 d-flex">
+                    <div className="m-0 p-5  w-100 d-flex" style={{backgroundImage: `url(${doctorGroups})`, backgroundPosition: "center", backgroundSize: "100% 100%"}}>
+                        <Row className="m-0 p-0 px-md-3 d-flex w-100">
+                            <Col className="m-0 p-0 d-flex flex-column" xxl={6} xl={6} lg={6} md={12} sm={12} xs={12}>
+                                <p className="fs-1 m-0 p-0 d-flex fw-bolder" style={{color: 'white'}}>Achieve Your Wellness Goals With AyurVitaCare Free Experts Consultantion Awaits</p>
+                                <p className="mt-3 mb-0 p-0 d-flex fw-bolder" style={{fontSize:'19px', color:'white'}}>Wellness is not a destination, it's a journey.Let AyurVitaCare walk with you every step.</p>
+                                <Button className="mt-3 text-center text-light fw-bolder border-0" style={{background: '#003569', width:'40%'}}>Book Now</Button>
+                            </Col>
+                        </Row>
+                    </div>
+                </Col>
             </Row>
         </>
     );
