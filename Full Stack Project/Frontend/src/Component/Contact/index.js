@@ -191,19 +191,6 @@ function Contact() {
 ingredients for high quality products!"/>
           <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals"/>
         </Helmet>
-            <Row className='d-flex m-0 px-5'>
-                <Col className='m-0 px-md-2 px-sm-0 px-0'>
-                    <div className='d-flex justify-content-between m-0 p-0 mt-5'>
-                        <div className='m-0 p-0 d-flex align-items-center gap-2 w-50'>
-                            <img src={Image1} alt='Image1' className='img-fluid' style={{height:'35px', width:'35px',borderRadius:'50%',border:'3px solid #17414F'}}/>
-                            <h5 style={{color:'#17414F'}} className='d-flex m-0 p-0 fw-bolder'>Vitamins</h5>
-                        </div>
-                        <div>
-                            <Button className="d-flex gap-2 px-md-4 p-2 border-0 rounded-5 fw-bolder" onClick={() => navigate("/")} style={{background:'#17414F',color:'white'}}><FaHome className='fs-5 fs-md-4'/><span className="d-none d-md-inline">Home</span></Button>
-                        </div>
-                    </div>
-                </Col>
-            </Row>
             <Row className='m-0 p-0 d-flex mt-5 px-5'>
                 <Col className='m-0 p-0 d-flex px-md-0 px-sm-0 px-0 px-md-2' xxl={11} xl={11} lg={11} md={11} sm={10} xs={10}>
                     <div className='w-100 m-0 p-0 flex-column'>
@@ -324,33 +311,6 @@ ingredients for high quality products!"/>
                         <p className='w-100 fs-6 m-0 p-0 mt-3' style={{color:'#727272'}}>Assitance hours:</p>
                         <p className='w-100 fs-6 m-0 p-0' style={{color:'#727272'}}>Monday - Friday 6 am to</p>
                         <p className='w-100 fs-6 m-0 p-0' style={{color:'#727272'}}>8 pm EST</p>
-                    </div>
-                </Col>
-            </Row>
-            <Row className='d-flex m-0 p-0 mt-5' style={{background:'#17414F'}}>
-                <Col className='d-flex m-0 p-0 px-md-2' xl={6} lg={6} md={12} sm={12}>
-                    <div className='m-0 p-0 d-flex justify-content-center justify-content-sm-start align-items-center w-100'>
-                        <div className='p-5 m-0 flex-column'>
-                            <h2 className='fw-bolder d-flex m-0 p-0' style={{color:'white'}}>Subcribe Our NewsLetter</h2>
-                            <p className='d-flex m-0 p-0 mt-3' style={{color:'#727272'}}>Subscribe for Updates: Stay informed about the latest investor updates</p>
-                            <p className='d-flex m-0 p-0' style={{color:'#727272'}}>financial resultd, and announcement by subscribing to our newsletter</p>
-                        </div>
-                    </div>
-                </Col>
-                <Col className='d-flex m-0 p-0 px-md-2' xl={6} lg={6} md={12} sm={12}>
-                    <div className='w-100 d-flex m-0 p-5 d-flex justify-content-center justify-content-sm-center align-items-center'>
-                        <Form className='flex-column m-0 p-0 w-100'>
-                            <div className='d-flex w-100 m-0 p-0 rounded-1' style={{background:'rgba(255, 255, 255, 0.1)'}}>
-                                <Form.Group className='w-100'>
-                                    <Form.Control 
-                                        style={{color:'white',boxShadow:'none',outline:'none'}}
-                                        className='p-2 d-flex m-0 border-0 bg-transparent fw-bolder'
-                                        placeholder='Enter your email'
-                                    />
-                                </Form.Group>
-                                <Button className='fw-bolder border-0 m-0 px-4 py-2' style={{background:'white',color:'#17414F'}}>Subcribe</Button>
-                            </div>
-                        </Form>
                     </div>
                 </Col>
             </Row>

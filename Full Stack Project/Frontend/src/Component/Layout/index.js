@@ -6,7 +6,7 @@ function Layout() {
     return (
         <>
         <div className="m-0 p-0 w-100">
-            <div className="shadow position-fixed w-100 m-0 p-0">
+            <div className="shadow position-fixed w-100 m-0 p-0" style={{zIndex:5}}>
                 <Header />
             </div>
             <Outlet />
