@@ -6,6 +6,7 @@ import Layout from "../Component/Layout";
 
 const HomeLayout = React.lazy(() => import('../Layout/Home'));
 const ContactLayout = React.lazy(() => import('../Layout/Contact'));
+const AboutLayout = React.lazy(() => import('../Layout/About'));
 const RegisterLayout = React.lazy(() => import('../Layout/Register'));
 const LoginLayout = React.lazy(() => import('../Layout/Login'));
 const ForgotLayout = React.lazy(() => import('../Layout/Forgot'));
@@ -56,7 +57,9 @@ function Routers() {
         <Route element={<PrivateRoutes />}>
           <Route element={<Layout />}>
             <Route path='/home' element={<HomeLayout />} />
-            <Route path="/contact" element={<ContactLayout />} /></Route>
+            <Route path="/contact" element={<ContactLayout />} />
+            <Route path='/about' element={<AboutLayout />} />
+          </Route>
         </Route>
         <Route path="/userDetails" element={<UserDetailsLayout />} />
         <Route path="*" element={<NotFoundLayout />} />

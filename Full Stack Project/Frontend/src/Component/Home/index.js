@@ -53,11 +53,6 @@ ingredients for high quality products!"/>
           <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals"/>
         </Helmet>
         <div className='flex-column w-100 h-100 m-0 p-0' style={{background: "#E2F5FB"}}>
-        <Row className='d-flex m-0 p-0'>
-            <Col className='m-0 p-0 d-flex justify-content-center'>
-                { role === "ADMIN" ? <Button className='px-4 py-2 rounded-5 border-0 text-start' onClick={() => navigate('/contact')} style={{background:"#17414F"}}>VIEW CUSTOMERS</Button> : <Button className='px-4 py-2 rounded-5 border-0 text-start' onClick={() => navigate('/userDetails')} style={{background:"#17414F"}}>VIEW DETAILS</Button>}
-            </Col>
-        </Row>
         <Row className='d-flex justify-content-center p-0 m-0'>
             <Col className='d-flex justify-content-center m-0 p-0 ' xl={12} lg={12} md={12} sm={6} xs={6}>
                     <h1 style={{color:'#003569',letterSpacing: '8px'}} className='d- text-center  display-1 fw-bolder mt-5'>Essential Vitamins</h1>
