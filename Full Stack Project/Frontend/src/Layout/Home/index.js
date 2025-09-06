@@ -9,7 +9,7 @@ function HomeLayout() {
     return (
         <Container className='p-0 m-0' fluid>
             <Row className=' d-flex m-0 p-0'>
-                <Col className='d-flex m-0 p-0'>
+                <Col className='d-flex m-0 p-0' style={{background: "#E2F5FB"}}>
                     <Home />
                 </Col>
             </Row>

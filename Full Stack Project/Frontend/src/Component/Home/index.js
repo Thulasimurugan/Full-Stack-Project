@@ -52,7 +52,7 @@ function Home() {
 ingredients for high quality products!"/>
           <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals"/>
         </Helmet>
-        <div className='flex-column w-100 h-100 m-0 p-0' style={{background: "#E2F5FB"}}>
+        <div className='flex-column w-100 h-100 mt-5 p-0'>
         <Row className='d-flex justify-content-center p-0 m-0'>
             <Col className='d-flex justify-content-center m-0 p-0 ' xl={12} lg={12} md={12} sm={6} xs={6}>
                     <h1 style={{color:'#003569',letterSpacing: '8px'}} className='d- text-center  display-1 fw-bolder mt-5'>Essential Vitamins</h1>
@@ -64,7 +64,7 @@ ingredients for high quality products!"/>
                     <p className='d-flex p-0 mb-2 fs-6 text-start' style={{letterSpacing:"0.8px",color:'#727272'}}>Online Medical Supplies</p>
                     <p className='d-flex p-0 fs-4 m-0 text-start' style={{color:'#17414F'}}>Get Your Vitamins</p>
                     <p className='d-flex p-0 fs-4 mt-0 text-start' style={{color:'#17414F'}}>& Minerals</p>
-                    <Button className='px-4 py-2 rounded-5 border-0 w-75 text-start' onClick={() => navigate('/contact')} style={{background:"#17414F"}}>EXPLORE</Button>
+                    <Button className='px-4 py-2 rounded-5 border-0 w-75 text-start' style={{background:"#17414F"}}>EXPLORE</Button>
                 </div>
             </Col>
             <Col lg={4} xl={4} xxl={4} md={4} sm={12} xs={12} className='justify-content-center align-items-start align-items-sm-end d-flex mt-3 mt-lg-0'>
