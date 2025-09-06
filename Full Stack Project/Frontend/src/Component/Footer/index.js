@@ -2,12 +2,14 @@ import React from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { IoFastFood, IoFastFoodOutline, IoFitness, IoFitnessOutline, IoHomeOutline } from 'react-icons/io5';
 import { CiCircleInfo, CiMobile3 } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Image1 from '../../Assets/Images/product-8-400x400.png.png';
 import { MdCopyright, MdMedicalServices, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { GiHealthCapsule, GiMedicinePills, GiChemicalDrop, GiBrain } from "react-icons/gi";
 
 function Footer() {
+    const location = useLocation();
+
     const quickLinks = [
         {
             quickName: 'Home',
@@ -96,7 +98,7 @@ function Footer() {
                             <div className="mt-4 mt-md-0 px-0 px-sm-0 px-md-4 px-xl-4 d-flex flex-column w-100">
                                 <p className="w-100 m-0 p-0 text-light fs-5 fw-bolder">Quick Links</p>
                                 <div className="m-0 mt-2 d-flex flex-column">
-                                    {quickLinks.map((quick, index) => (
+                                    {quickLinks.filter((values) => values?.quickUrls !== location.pathname).map((quick, index) => (
                                         <Link key={index} onClick={() => window.location.href = `${quick.quickUrls}`} className="d-flex align-items-center m-0 py-1 gap-2 text-decoration-none">
                                             <span className="p-0 m-0 d-flex text-light">{quick.quickIcons}</span>
                                             <span className="p-0 m-0 d-flex text-light">{quick.quickName}</span>

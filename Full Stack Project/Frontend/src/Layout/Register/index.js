@@ -4,7 +4,7 @@ import React from "react";
 
 function RegisterLayout() {
     return(
-        <Container fluid className="d-flex m-0 p-0 vh-100">
+        <Container fluid className="d-flex m-0 p-0 min-vh-100" style={{background:'#E2F5FB'}}>
             <Row className="d-flex m-0 p-0 w-100">
                 <Col className="d-flex m-0 p-0">
                     <Register />
