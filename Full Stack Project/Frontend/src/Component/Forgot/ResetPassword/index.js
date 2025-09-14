@@ -77,7 +77,7 @@ function ResetPassword({ showComponent, setShowComponent }) {
                 <p className='m-0 p-0 mt-1 mt-xl-0 mt-sm-1 mt-lg-0 mt-md-0' style={{ color: '#FFFFFF' }}>From previous used password.</p>
             </div>
             <Form className='p-0 m-0 flex-column' onSubmit={(event) => handleSubmit(event)}>
-                <div className='m-0 p-0 w-75'>
+                <div className='m-0 p-0 w-100'>
                     <style>{customStyles}</style>
                     <Form.Group className='w-100 m-0 p-0 border-0 my-xl-4'>
                         <Form.Label className='text-light'>Password <span className='fw-bolder m-0 p-0' style={{ color: '#FFFFFF' }}>*</span></Form.Label>
@@ -125,7 +125,7 @@ function ResetPassword({ showComponent, setShowComponent }) {
 ingredients for high quality products!"/>
                 <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals" />
             </Helmet>
-            <Row className='m-0 p-0 d-flex w-100 bg-danger'>
+            <Row className='m-0 p-0 d-flex w-100'>
                 <Col className='m-0 p-0 d-none d-md-flex' xxl={7} xl={7} lg={7} md={7} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
                     <div className='p-0 m-3 w-100 d-flex justify-content-center' style={{ position: 'relative' }}>
                         <img className="m-0 p-0 img-fluid w-100 h-100" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={heartImage} alt='heart-image' />
@@ -149,7 +149,7 @@ ingredients for high quality products!"/>
                         {resetPasswordForm()}
                     </div>
                     <div className='min-vh-100 w-100 d-flex justify-content-start align-items-end d-md-none m-0 p-4' style={{ backgroundImage: `url(${heartImage})`, backgroundPosition: 'center', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
-                        <div className='m-0 p-4 rounded-5' style={{ border: '3px solid #727272', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
+                        <div className='m-0 p-4 rounded-5 w-100' style={{ border: '3px solid #727272', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
                             {resetPasswordForm()}
                         </div>
                     </div>

@@ -145,7 +145,7 @@ function Register({ showComponent, setShowComponent }) {
 
     const forgotForm = () => (
         <>
-            <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Reset Password</h2>
+            <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Let's Verify Your Email!</h2>
             <p className='p-0 mt-2 mt-md-3 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Enter the email associated with your account and we'll send an email with OTP to reset your password.</p>
             <Form className='p-0 m-0 flex-column mt-1' onSubmit={(event) => handleSubmit(event)}>
                 <div className='m-0 p-0 w-100 d-block'>
