@@ -3,16 +3,11 @@ import { Helmet } from 'react-helmet';
 import Axios from 'axios';
 import Validator from 'validator';
 import { useNavigate, Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import { Row, Col, Button, Form, InputGroup, Spinner } from "react-bootstrap";
-import { FaEye, FaEyeSlash, FaUserCircle, FaApple, FaGoogle } from 'react-icons/fa';
-import { GrUserWorker } from 'react-icons/gr';
 import { popup } from '../../Popup';
 import { MdEmail } from 'react-icons/md';
-import { IoIosLock } from 'react-icons/io';
-import heartImage from '../../../Assets/Images/heart.jpeg';
+import { GiLindenLeaf, GiBrain } from 'react-icons/gi';
 import forgotBackground from "../../../Assets/Images/heartForgot.jpeg";
-import Image1 from '../../../Assets/Images/product-8-400x400.png.png';
 
 
 function Register({ showComponent, setShowComponent }) {
@@ -34,7 +29,7 @@ function Register({ showComponent, setShowComponent }) {
     }
 
     const customStyles = `.custom-placeholder::placeholder {
-        color: #003569;
+        color: ${small ? "#003569" : "#FFFFFF"};
         opacity: 1;
     }`;
 
@@ -141,17 +136,19 @@ function Register({ showComponent, setShowComponent }) {
             setIsLoading(false);
             popup.errorPopup({ msg: "Enter a valid email (e.g.,name@example.com).", color: "#dc3545", popupIcon: "error" });
         } else {
-            popup.errorPopup({ msg: "Success! We've sent a 6-digit code to your email.", color: "#28a745", popupIcon: "success" });
-            setShowComponent(1);
+            setTimeout(() => {
+                popup.errorPopup({ msg: "Success! We've sent a 6-digit code to your email.", color: "#28a745", popupIcon: "success" });
+                setShowComponent(1);
+            }, 3000);
         };
     };
 
     const forgotForm = () => (
         <>
             <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Reset Password</h2>
-            <p className='p-0 mt-2 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Enter the email associated with your account and we'll send an email with OTP to reset your password.</p>
-            <Form className='p-0 m-0 flex-column' onSubmit={(event) => handleSubmit(event)}>
-                <div className='m-0 p-0 w-75 d-block'>
+            <p className='p-0 mt-2 mt-md-3 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Enter the email associated with your account and we'll send an email with OTP to reset your password.</p>
+            <Form className='p-0 m-0 flex-column mt-1' onSubmit={(event) => handleSubmit(event)}>
+                <div className='m-0 p-0 w-100 d-block'>
                     <style>{customStyles}</style>
                     <Form.Group className='w-100 m-0 p-0 border-0'>
                         <Form.Label style={{ color: small ? "#003569" : "#FFFFFF" }} className='m-0 p-0 fw-bolder'>Email <span className='fw-bolder m-0 p-0' style={{ color: "red" }}>*</span></Form.Label>
@@ -165,11 +162,11 @@ function Register({ showComponent, setShowComponent }) {
                                 onChange={(event) => handleChange(event)}
                                 maxLength={400}
                                 className='fw-bolder custom-placeholder'
-                                style={{ marginLeft: '0px', border: 'none', boxShadow: 'none', outline: 'none', background: 'rgba(255, 255, 255,0.1)', color: small ? "#003569" : "#FFFFFF"}} />
+                                style={{ marginLeft: '0px', border: 'none', boxShadow: 'none', outline: 'none', background: 'rgba(255, 255, 255,0.1)', color: small ? "#003569" : "#FFFFFF" }} />
                         </InputGroup>
                     </Form.Group>
-                    <p className='my-3 p-0 gap-3 fw-bolder'><Link style={{ color: small ? "#003569" : "#FFFFFF" }} to={'/'}>Wait, I remember my password.</Link></p>
-                    <Button className="w-100 fw-bolder text-center border-0" id="emailButton" type='submit' style={{ color: small ?  "#FFFFFF" : "#003569" , background: small ?  "#003569" : "#FFFFFF"}}>{isLoading ? <><Spinner size='sm' className='mx-2 p-0' /> Sending...</> : "Send OTP"}</Button>
+                    <p className='mt-3 mb-3 mt-md-4 mb-md-4 p-0 gap-3 fw-bolder'><Link style={{ color: small ? "#003569" : "#FFFFFF" }} to={'/'}>Wait, I remember my password.</Link></p>
+                    <Button className="w-100 fw-bolder text-center border-0" id="emailButton" type='submit' disabled={isLoading ? true : false} style={{ color: small ? "#FFFFFF" : "#003569", background: small ? "#003569" : "#FFFFFF" }}>{isLoading ? <><Spinner size='sm' className='mx-2 p-0' /> Sending...</> : "Send OTP"}</Button>
                 </div>
             </Form>
         </>
@@ -193,40 +190,27 @@ function Register({ showComponent, setShowComponent }) {
 ingredients for high quality products!"/>
                 <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals" />
             </Helmet>
-            {/* <Row className='m-0 px-5 bg-danger w-100 h-100 d-flex'>
-                <Col className='w-100 h-100 m-0 d-flex justify-content-md-center align-items-md-center align-items-start justify-content-start p-0 py-md-5'>
-                    <div className='w-100 m-0 p-0 flex-grow align-items-xl-center justify-content-xl-center rounded-2' style={{ borderColor: '#727272', background: '#17414F', borderRadius: '10px' }}>
-                        <Row className='d-flex w-100 h-100 m-0 p-0'>
-                            <Col className='m-0 d-xl-flex d-xl-flex d-lg-flex d-md-flex d-sm-none d-none' style={{ padding: '12px' }}>
-                                <div className='m-0 p-0 w-100 rounded-2 d-flex' style={{ backgroundImage: `url(${heartImage})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100% 100%' }}>
-                                    <div className='m-0 p-3 d-flex align-items-start justify-content-start gap-2 w-50'>
-                                        <img src={Image1} alt='Image1' className='img-fluid' style={{ height: '35px', width: '35px', borderRadius: '50%', border: '3px solid #17414F' }} />
-                                        <h5 style={{ color: '#FFFFFF' }} className='m-0 p-0 fw-bolder mt-1 mb-1'>Vitamins</h5>
-                                    </div>
+            <Row className='m-0 p-0 d-flex w-100'>
+                <Col className='m-0 p-0 d-none d-md-flex' xxl={7} xl={7} lg={7} md={7} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
+                    <div className='p-0 m-3 w-100 d-flex justify-content-center' style={{ position: 'relative' }}>
+                        <img className="m-0 p-0 img-fluid w-100 h-100" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={forgotBackground} alt='heart-image' />
+                        <div className='m-0 p-0 py-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
+                            <p className='m-0 p-0 text-light fw-bolder fs-4 w-75'>Knowledge sharing and lifecycle guidence for holistic health</p>
+                            <div className='d-flex mt-3 mb-0 p-0 gap-3' style={{width: '70%'}}>
+                                <div className='w-50 p-0 m-0 d-flex justify-content-start align-items-center overflow-hidden' style={{ border: "2px solid #FFFFFF", borderRadius: '20px' }}>
+                                    <span className='m-0 fs-6 p-0 d-flex bg-light  h-100 align-items-center justify-content-center' style={{  width: "30%", borderRadius: '20px', color: '#003569' }}><GiLindenLeaf /></span>
+                                    <p className='m-0 px-md-2 py-md-2 fw-bolder fs-6 w-100 text-center' style={{ color: '#003569' }}>Herbal Medicine</p>
                                 </div>
-                            </Col>
-                            <Col className='d-flex p-0 p-md-5 m-0 align-items-md-center justify-content-md-center align-items-start'>
-                                <div className='flex-column m-0 p-0 w-100 p-xl-5 d-none d-md-flex'>
-                                    {forgotForm()}
+                                <div className='w-50 p-0 m-0 d-flex justify-content-start align-items-center overflow-hidden' style={{ border: "2px solid #FFFFFF", borderRadius: '20px' }}>
+                                    <span className='m-0 p-0 fs-6 d-flex bg-light h-100 align-items-center justify-content-center' style={{ width: "30%", borderRadius: '20px', color: '#003569' }}><GiBrain /></span>
+                                    <p className='m-0 px-md-2 py-md-2 fw-bolder fs-6 text-center w-100'  style={{ color: '#003569' }}>Mind-Body Wellness</p>
                                 </div>
-                                <div className='min-vh-100 w-100 d-flex justify-content-start align-items-end d-md-none m-0 p-4' style={{ backgroundImage: `url(${forgotBackground})`, backgroundPosition: 'center', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>
-                                    <div className='m-0 p-4 rounded-5' style={{ border: '3px solid #727272', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)"}}>
-                                        {forgotForm()}
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
+                            </div>
+                        </div>
                     </div>
                 </Col>
-            </Row> */}
-            <Row className='m-0 p-md-5 d-flex w-100'>
-                <Col className='m-0 p-0 d-none d-md-flex ' xxl={7} xl={7} lg={7} md={7} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
-                    <div className='p-0 m-2 d-flex'>
-                        <img className="m-0 p-0 img-fluid" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={forgotBackground} alt='heart-image' />
-                    </div>
-                </Col>
-                <Col className='m-0 p-0 d-flex align-items-center justify-content-center bg-warning' xxl={5} xl={5} lg={5} md={5} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderLeft: 'None', borderTopRightRadius: '25px', borderBottomRightRadius: '25px' }} >
-                    <div className='flex-column m-0 p-0 w-100 p-md-5 d-none d-md-flex'>
+                <Col className='m-0 p-0 d-flex h-100 align-items-center justify-content-center' xxl={5} xl={5} lg={5} md={5} >
+                    <div className='flex-column h-100 m-0 p-0 w-100 px-md-4 px-lg-5 py-md-5 d-none d-md-flex justify-content-center' style={{ backgroundColor: '#003569', border: '3px solid #727272', borderLeft: 'None', borderTopRightRadius: '25px', borderBottomRightRadius: '25px' }}>
                         {forgotForm()}
                     </div>
                     <div className='min-vh-100 w-100 d-flex justify-content-start align-items-end d-md-none m-0 p-4' style={{ backgroundImage: `url(${forgotBackground})`, backgroundPosition: 'center', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>

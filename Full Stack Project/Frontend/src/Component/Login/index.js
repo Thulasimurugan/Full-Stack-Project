@@ -123,10 +123,12 @@ function Login() {
             setIsLoading(false);
             popup.errorPopup({ msg: "Password must be at least 8 characters long, include uppercase, lowercase, a number, and a special character.", color: "#dc3545", popupIcon: "error" });
         } else {
-            popup.errorPopup({ msg: "Welcome back! You've logged in successfully.", color: "#28a745", popupIcon: "success" });
-            Auth.login(() => {
-                navigate('/home');
-            });
+            setTimeout(() => {
+                popup.errorPopup({ msg: "Welcome back! You've logged in successfully.", color: "#28a745", popupIcon: "success" });
+                Auth.login(() => {
+                    navigate('/home');
+                });
+            }, 3000)
         }
     };
 
@@ -155,7 +157,7 @@ function Login() {
                 <Form className='w-100 d-flex justify-content-center align-items-center' id="myForm" onSubmit={(event) => isChecked === true && localEmail !== null && token !== null ? handleAutoLogin(event) : handleSubmit(event)}>
                     <div className='m-0 p-0 flex-column w-75'>
                         <p className='m-0 p-0 text-center fw-bolder' style={{ color: '#17414F', fontSize: '17px' }}>Login Please</p>
-                        <p className='m-0 p-0 text-center mt-1' style={{ color: '#727272', fontSize: '14px' }}>This is a secure system and you will need to provide your login details to access the site.</p>
+                        <p className='mt-2 mt-md-1 mb-0 p-0 text-center' style={{ color: '#727272', fontSize: '14px' }}>This is a secure system and you will need to provide your login details to access the site.</p>
                         <Form.Group className='w-100 m-0 p-0 border-0 mt-4'>
                             <InputGroup className='rounded-2' style={{ border: '2px solid #17414F' }}>
                                 <InputGroup.Text className='bg-transparent' style={{ border: 'none' }}><MdEmail /></InputGroup.Text>
@@ -187,7 +189,7 @@ function Login() {
                                 <InputGroup.Text className='bg-transparent' style={{ border: 'none' }}>{visible ? <FaEyeSlash onClick={() => setVisible(false)} style={{ cursor: 'pointer' }} /> : <FaEye onClick={() => setVisible(true)} style={{ cursor: 'pointer' }} />}</InputGroup.Text>
                             </InputGroup>
                         </Form.Group>
-                        <div className='d-flex m-0 p-0 w-100 mt-2 mb-2 justify-content-end'>
+                        <div className='d-flex mt-3 mb-3 p-0 w-100 justify-content-end'>
                             <a onClick={() => handleForgot()} className='fs-6 m-0 p-0' style={{ color: '#2D3F59', textDecoration: 'none', cursor: 'pointer' }}>Forgot Password?</a>
                         </div>
                         {/* <div className='d-flex m-0 p-0 w-100 mt-2 mb-2 justify-content-start gap-2'>
@@ -268,7 +270,7 @@ ingredients for high quality products!"/>
                 </Col>
                 <Col className='m-0 p-0 d-flex' xxl={4} xl={4} lg={4} md={4}>
                     <div className='m-0 p-0 d-none py-md-5 d-md-flex w-100 ' style={{ backgroundColor: "#003569", border: '3px solid #727272', borderLeft: "None", borderTopRightRadius: '25px', borderBottomRightRadius: '25px' }}>
-                        <div className='py-4 w-100 d-flex align-items-center justify-content-center shadow' style={{ marginLeft: `${margin}`, border: "1px solid #737373", borderRadius: '15px', borderColor: '#727272', background: '#FFFFFF' }}>
+                        <div className='py-md-3 py-lg-4 py-xl-5 w-100 d-flex align-items-center justify-content-center shadow' style={{ marginLeft: `${margin}`, border: "1px solid #737373", borderRadius: '15px', borderColor: '#727272', background: '#FFFFFF' }}>
                             {loginForm()}
                         </div>
                     </div>
@@ -277,7 +279,7 @@ ingredients for high quality products!"/>
                             <img className="img-fluid d-flex m-0 p-0" src={welcomeDoctor} alt="welcome-doctor" />
                         </div>
                         <div className="w-100 m-0 h-50 p-0 d-flex align-items-center justify-content-center flex-column " style={{ position: 'absolute', zIndex: '2', bottom: '0', left: '0', right: '0' }}>
-                            <img className="m-0 p-0 img-fluid h-75" style={{position: 'absolute', zIndex: 1, top: '8%'}} src={loginWave} alt='login-wave'/>
+                            <img className="m-0 p-0 img-fluid h-75" style={{ position: 'absolute', zIndex: 1, top: '8%' }} src={loginWave} alt='login-wave' />
                             <p className='m-0 p-0 fs-5 w-100 text-center fw-bolder z-2' style={{ color: '#E2F5FB' }}>Namaste, Welcome Back!</p>
                             <p className='m-0 p-0 fs-6 text-center fw-bolder z-2 mt-2 w-75' style={{ color: '#727272' }}>Discover natural healing and personalized care for a healthier you.</p>
                             <Button onClick={() => setShow(true)} className="rounded-5 mt-3 w-75 fw-bolder text-center z-2" style={{ border: '3px solid #727272', background: '#E2F5FB', color: '#003569' }}>Begin Your Wellness Journey</Button>
@@ -289,7 +291,7 @@ ingredients for high quality products!"/>
                         headerContent: closeContent,
                         bodyContent: loginForm,
                         canvasClassname: "m-0 p-0  d-flex d-md-none",
-                        canvasStyle: { borderTopRightRadius: '35px', borderTopLeftRadius: '35px', height: '70%', borderTop: '3px solid #727272'},
+                        canvasStyle: { borderTopRightRadius: '35px', borderTopLeftRadius: '35px', height: '70%', borderTop: '3px solid #727272' },
                         headerClassname: "m-0 p-0 d-flex",
                         headerStyle: {},
                         bodyClassname: 'w-100 d-flex flex-column justify-content-start align-items-center m-0 p-0',

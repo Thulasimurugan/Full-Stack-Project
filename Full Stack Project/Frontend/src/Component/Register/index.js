@@ -86,28 +86,30 @@ function Register() {
         event.preventDefault();
         if (small && Validator.isEmpty(register.fullname)) {
             setIsLoading(false);
-            popup.errorPopup({msg: "Oops! Full name can't be empty.", color: "#dc3545", popupIcon: "error"});
+            popup.errorPopup({ msg: "Oops! Full name can't be empty.", color: "#dc3545", popupIcon: "error" });
         } else if (!small && Validator.isEmpty(register.firstname)) {
             setIsLoading(false);
-            popup.errorPopup({msg: "Oops! First name can't be empty.", color: "#dc3545", popupIcon: "error"});
+            popup.errorPopup({ msg: "Oops! First name can't be empty.", color: "#dc3545", popupIcon: "error" });
         } else if (!small && Validator.isEmpty(register.lastname)) {
             setIsLoading(false);
-            popup.errorPopup({msg: "Oops! Last name can't be empty.", color: "#dc3545", popupIcon: "error"});
+            popup.errorPopup({ msg: "Oops! Last name can't be empty.", color: "#dc3545", popupIcon: "error" });
         } else if (Validator.isEmpty(register.email)) {
             setIsLoading(false);
-            popup.errorPopup({msg: "We'll need your email to continue.", color: "#dc3545", popupIcon: "error"});
+            popup.errorPopup({ msg: "We'll need your email to continue.", color: "#dc3545", popupIcon: "error" });
         } else if (Validator.isEmpty(register.password)) {
             setIsLoading(false);
-            popup.errorPopup({msg: "Don't forget your password.", color: "#dc3545", popupIcon: "error"});
+            popup.errorPopup({ msg: "Don't forget your password.", color: "#dc3545", popupIcon: "error" });
         } else if (!Validator.isEmail(register.email)) {
             setIsLoading(false);
-            popup.errorPopup({msg: "Enter a valid email (e.g.,name@example.com).", color: "#dc3545", popupIcon: "error"});
+            popup.errorPopup({ msg: "Enter a valid email (e.g.,name@example.com).", color: "#dc3545", popupIcon: "error" });
         } else if (!Validator.isStrongPassword(register.password)) {
             setIsLoading(false);
-            popup.errorPopup({msg: "Password must be at least 8 characters long, include uppercase, lowercase, a number, and a special character.", setIsLoading, color: "#dc3545", popupIcon: "error"});
+            popup.errorPopup({ msg: "Password must be at least 8 characters long, include uppercase, lowercase, a number, and a special character.", setIsLoading, color: "#dc3545", popupIcon: "error" });
         } else {
-            popup.errorPopup({msg: "Welcome aboard Your account is ready.", color: "#28a745", popupIcon: "success"});
-            navigate("/");
+            setTimeout(() => {
+                popup.errorPopup({ msg: "Welcome aboard Your account is ready.", color: "#28a745", popupIcon: "success" });
+                navigate("/");
+            },3000);
         }
     }
 
