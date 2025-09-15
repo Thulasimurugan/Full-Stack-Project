@@ -8,9 +8,10 @@ import { popup } from '../../Popup';
 import { MdEmail } from 'react-icons/md';
 import { GiLindenLeaf, GiBrain } from 'react-icons/gi';
 import forgotBackground from "../../../Assets/Images/heartForgot.jpeg";
+import forgotBackground1 from '../../../Assets/Images/aboutLugs.jpeg';
 
 
-function Register({ showComponent, setShowComponent }) {
+function Register({ showComponent, setShowComponent, isEmaiSubmit, setEmailSubmit }) {
     const [visible, setVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [small, setSmall] = useState(window.innerWidth < 768)
@@ -137,6 +138,7 @@ function Register({ showComponent, setShowComponent }) {
             popup.errorPopup({ msg: "Enter a valid email (e.g.,name@example.com).", color: "#dc3545", popupIcon: "error" });
         } else {
             setTimeout(() => {
+                setEmailSubmit(true);
                 popup.errorPopup({ msg: "Success! We've sent a 6-digit code to your email.", color: "#28a745", popupIcon: "success" });
                 setShowComponent(1);
             }, 3000);
@@ -145,7 +147,7 @@ function Register({ showComponent, setShowComponent }) {
 
     const forgotForm = () => (
         <>
-            <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Reset Password</h2>
+            <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Let's Verify Your Email!</h2>
             <p className='p-0 mt-2 mt-md-3 d-flex fw-bolder' style={{ color: small ? "#003569" : "#FFFFFF" }}>Enter the email associated with your account and we'll send an email with OTP to reset your password.</p>
             <Form className='p-0 m-0 flex-column mt-1' onSubmit={(event) => handleSubmit(event)}>
                 <div className='m-0 p-0 w-100 d-block'>
@@ -166,7 +168,7 @@ function Register({ showComponent, setShowComponent }) {
                         </InputGroup>
                     </Form.Group>
                     <p className='mt-3 mb-3 mt-md-4 mb-md-4 p-0 gap-3 fw-bolder'><Link style={{ color: small ? "#003569" : "#FFFFFF" }} to={'/'}>Wait, I remember my password.</Link></p>
-                    <Button className="w-100 fw-bolder text-center border-0" id="emailButton" type='submit' disabled={isLoading ? true : false} style={{ color: small ? "#FFFFFF" : "#003569", background: small ? "#003569" : "#FFFFFF" }}>{isLoading ? <><Spinner size='sm' className='mx-2 p-0' /> Sending...</> : "Send OTP"}</Button>
+                    <Button className="w-100 fw-bolder text-center border-0" id="emailButton" type='submit' disabled={isLoading ? true : false} style={{ color: small ? "#FFFFFF" : "#003569", background: small ? "#003569" : "#FFFFFF" }}>{isLoading ? <><Spinner size='sm' className='mx-1 p-0' /> Sending...</> : "Send OTP"}</Button>
                 </div>
             </Form>
         </>
@@ -185,7 +187,7 @@ function Register({ showComponent, setShowComponent }) {
     return (
         <>
             <Helmet>
-                <title>Reset Password</title>
+                <title>Verify Email</title>
                 <meta name="description" content="Only the best when you choose products offered on our platform - high quality
 ingredients for high quality products!"/>
                 <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals" />
@@ -193,17 +195,17 @@ ingredients for high quality products!"/>
             <Row className='m-0 p-0 d-flex w-100'>
                 <Col className='m-0 p-0 d-none d-md-flex' xxl={7} xl={7} lg={7} md={7} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
                     <div className='p-0 m-3 w-100 d-flex justify-content-center' style={{ position: 'relative' }}>
-                        <img className="m-0 p-0 img-fluid w-100 h-100" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={forgotBackground} alt='heart-image' />
-                        <div className='m-0 p-0 py-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
-                            <p className='m-0 p-0 text-light fw-bolder fs-4 w-75'>Knowledge sharing and lifecycle guidence for holistic health</p>
-                            <div className='d-flex mt-3 mb-0 p-0 gap-3' style={{width: '70%'}}>
+                        <img className="m-0 p-0 img-fluid w-100 h-100" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={forgotBackground1} alt='heart-image' />
+                        <div className='m-0 p-0 p-md-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
+                            <p className='m-0 p-0 fw-bolder fs-4 w-75 text-light'>Knowledge sharing and lifecycle guidence for holistic health</p>
+                            <div className='d-flex mt-3 mb-0 p-0 gap-3 w-100'>
                                 <div className='w-50 p-0 m-0 d-flex justify-content-start align-items-center overflow-hidden' style={{ border: "2px solid #FFFFFF", borderRadius: '20px' }}>
                                     <span className='m-0 fs-6 p-0 d-flex bg-light  h-100 align-items-center justify-content-center' style={{  width: "30%", borderRadius: '20px', color: '#003569' }}><GiLindenLeaf /></span>
-                                    <p className='m-0 px-md-2 py-md-2 fw-bolder fs-6 w-100 text-center' style={{ color: '#003569' }}>Herbal Medicine</p>
+                                    <p className='m-0 px-md-2 py-md-2 fw-bolder fs-6 w-100 text-center text-light'>Herbal Medicine</p>
                                 </div>
                                 <div className='w-50 p-0 m-0 d-flex justify-content-start align-items-center overflow-hidden' style={{ border: "2px solid #FFFFFF", borderRadius: '20px' }}>
                                     <span className='m-0 p-0 fs-6 d-flex bg-light h-100 align-items-center justify-content-center' style={{ width: "30%", borderRadius: '20px', color: '#003569' }}><GiBrain /></span>
-                                    <p className='m-0 px-md-2 py-md-2 fw-bolder fs-6 text-center w-100'  style={{ color: '#003569' }}>Mind-Body Wellness</p>
+                                    <p className='m-0 px-md-2 py-md-2 fw-bolder fs-6 text-center w-100 text-light'>Mind-Body Wellness</p>
                                 </div>
                             </div>
                         </div>

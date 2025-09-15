@@ -202,7 +202,7 @@ function Login() {
                         <p>Remember Me</p>
                     </div> */}
                         <div className='d-flex m-0 p-0 flex-column'>
-                            <Button className='w-100 text-center border-0 rounded-2' disabled={isLoading ? true : false} id='loginButton' type='submit' style={{ background: '#17414F', color: 'white' }}>{isLoading ? <><Spinner size='sm' className='text-light mx-2 p-0' /> Please wait...</> : "Login"}</Button>
+                            <Button className='w-100 text-center border-0 rounded-2' disabled={isLoading ? true : false} id='loginButton' type='submit' style={{ background: '#17414F', color: 'white' }}>{isLoading ? <><Spinner size='sm' className='text-light mx-1 p-0' /> Please wait...</> : "Login"}</Button>
                             <p className='w-100 mt-3 mb-0 p-0 text-center'>Continue With One of These</p>
                             <div className='mt-1 mb-1 p-0 d-flex justify-content-center gap-4 w-100'>
                                 {socialIcons.map((value, index) => (
@@ -270,7 +270,7 @@ ingredients for high quality products!"/>
                 </Col>
                 <Col className='m-0 p-0 d-flex' xxl={4} xl={4} lg={4} md={4}>
                     <div className='m-0 p-0 d-none py-md-5 d-md-flex w-100 ' style={{ backgroundColor: "#003569", border: '3px solid #727272', borderLeft: "None", borderTopRightRadius: '25px', borderBottomRightRadius: '25px' }}>
-                        <div className='py-md-3 py-lg-4 py-xl-5 w-100 d-flex align-items-center justify-content-center shadow' style={{ marginLeft: `${margin}`, border: "1px solid #737373", borderRadius: '15px', borderColor: '#727272', background: '#FFFFFF' }}>
+                        <div className='py-md-3 py-lg-4 w-100 d-flex align-items-center justify-content-center shadow' style={{ marginLeft: `${margin}`, border: "1px solid #737373", borderRadius: '15px', borderColor: '#727272', background: '#FFFFFF' }}>
                             {loginForm()}
                         </div>
                     </div>

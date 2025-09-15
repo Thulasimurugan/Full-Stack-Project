@@ -1,20 +1,15 @@
 import { useState } from 'react';
 import Validator from 'validator';
 import { useNavigate, Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { Row, Col, Button, Form, InputGroup, Spinner } from "react-bootstrap";
 import { FaEye, FaEyeSlash, FaUserCircle, FaApple, FaFacebookF, FaTwitter } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { GrUserWorker } from 'react-icons/gr';
 import { MdEmail } from 'react-icons/md';
 import { IoIosLock } from 'react-icons/io';
 import heartImage from '../../Assets/Images/aboutLugs.jpeg';
 import registerWave from "../../Assets/Images/wave.png";
 import { popup } from '../Popup';
-import registerTablets from "../../Assets/Images/registerTablets.png";
-import Image1 from '../../Assets/Images/product-8-400x400.png.png';
 import { useEffect } from 'react';
 
 
@@ -214,7 +209,7 @@ function Register() {
                             <InputGroup.Text style={{ marginLeft: '0px', border: 'none', background: 'rgba(255, 255, 255, 0.1)', color: '#FFFFFF' }}>{visible ? <FaEyeSlash onClick={() => setVisible(false)} style={{ cursor: "pointer" }} /> : <FaEye onClick={() => setVisible(true)} style={{ cursor: "pointer" }} />}</InputGroup.Text>
                         </InputGroup>
                     </Form.Group>
-                    <Button className="w-100 mt-4 fw-bolder text-center border-0" id='registerButton' type='submit' style={{ color: small ? '#FFFFFF' : '#003569', backgroundColor: small ? '#003569' : '#FFFFFF' }}>{isLoading && <Spinner className="mx-2 p-0" size='sm' />}{isLoading ? "Creating..." : "Create account"}</Button>
+                    <Button className="w-100 mt-4 fw-bolder text-center border-0" id='registerButton' type='submit' style={{ color: small ? '#FFFFFF' : '#003569', backgroundColor: small ? '#003569' : '#FFFFFF' }}>{isLoading && <Spinner className="mx-1 p-0" size='sm' />}{isLoading ? "Creating..." : "Create account"}</Button>
                     <p className='w-100 text-center mt-3 mb-2 fw-bolder' style={{ color: small ? '#003569' : '#FFFFFF' }}>Continue With Those of One</p>
                     <div className='w-100 m-0 p-0 d-flex justify-content-center align-items-center gap-xl-5 gap-lg-4 gap-md-3'>
                         {socialIcons.map((value, index) => (

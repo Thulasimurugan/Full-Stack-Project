@@ -22,6 +22,7 @@ const errorPopup = ({ msg, color, popupIcon }) => {
     Toast.fire({
         icon: popupIcon,
         title: msg,
+        iconColor: color,
     });
 };
 

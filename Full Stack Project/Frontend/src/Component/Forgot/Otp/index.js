@@ -7,10 +7,12 @@ import forgotBackground from '../../../Assets/Images/aboutLugs.jpeg';
 import { GiLindenLeaf, GiBrain } from 'react-icons/gi';
 import { popup } from '../../Popup';
 import { Helmet } from 'react-helmet';
+import { Prev } from 'react-bootstrap/esm/PageItem';
 
 
-function ForgotOTP({ showComponent, setShowComponent, length = 6 }) {
+function ForgotOTP({ showComponent, setShowComponent, length = 6, isEmaiSubmit, setEmailSubmit }) {
     const [otp, setOtp] = useState(Array(length).fill(""));
+    const [countDown, setCountDown] = useState(!isEmaiSubmit ? sessionStorage.getItem("countDown") : 120);
     const [isLoading, setIsLoading] = useState(false);
     const [small, setSmall] = useState(window.innerWidth < 768);
     const inputRef = useRef([]);
@@ -34,7 +36,7 @@ function ForgotOTP({ showComponent, setShowComponent, length = 6 }) {
         border: '3px solid #727272', 
         backgroundColor: "rgba(255, 255, 255, 0.1)", 
         backdropFilter: "blur(10px)"
-    }
+    };
 
     const handleChange = (event, index) => {
         const value = event.target.value;
@@ -51,6 +53,12 @@ function ForgotOTP({ showComponent, setShowComponent, length = 6 }) {
 
     }
 
+    const count = () => {
+        const second = String(countDown % 60).padStart(2, "0");
+        const minute = String(Math.floor((countDown / 60) % 60)).padStart(2, "0");
+        return `${minute}:${second}`;
+    }
+
     const customStyles = `.custom-placeholder::placeholder {
         color: #FFFFFF;
         opacity: 1;
@@ -65,6 +73,8 @@ function ForgotOTP({ showComponent, setShowComponent, length = 6 }) {
     }
 
     const handleResend = () => {
+        setEmailSubmit(true);
+        setCountDown(120);
         popup.errorPopup({ msg: "We've resend the OTP to your email. Kindly veify.", color: "#28a745", popupIcon: "success" });
     }
 
@@ -88,18 +98,30 @@ function ForgotOTP({ showComponent, setShowComponent, length = 6 }) {
         };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    })
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            sessionStorage.setItem("countDown", countDown);
+            setCountDown((prev) => prev - 1);
+        },1000);
+        if(countDown < 1) {
+            setEmailSubmit(false);
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    }, [countDown]);
 
     const verifyForm = () => (
         <>
-            <h2 className='m-0 p-0 w-100 d-flex' style={{ color: '#FFFFFF' }}>Verification Code</h2>
+            <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: '#FFFFFF' }}>Let's Verify Your OTP!</h2>
             <p className='m-0 p-0 mt-xl-3 mt-lg-3 mt-md-3 mt-2 fw-bolder w-100' style={{ color: '#FFFFFF' }}>Your reset password verification code is on its way! check your email and get started!</p> 
             <p className='mt-3 mb-3 mt-md-4 mb-md-4 p-0 fw-bolder d-flex w-100'><Link style={{ color: "#FFFFFF" }} to={'/'}>Wait, I remember my password.</Link></p>
             <Form className='p-0 m-0 flex-column' onSubmit={(event) => handleSubmit(event)}>
                 <div className='m-0 p-0'>
                     <style>{customStyles}</style>
                     <Form.Group className='w-100 m-0 p-0 border-0'>
-                        <Form.Label className='text-light'>OTP <span className='fw-bolder m-0 p-0' style={{ color: '#FFFFFF' }}>*</span></Form.Label>
+                        <Form.Label className='text-light m-0 p-0 fw-bolder'>OTP <span className='fw-bolder m-0 p-0' style={{ color: 'red' }}>*</span></Form.Label>
                         <div className='d-flex gap-2 w-100 m-0 p-0'>
                             {otp.map((_, index) => (
                                 <Form.Control
@@ -110,15 +132,18 @@ function ForgotOTP({ showComponent, setShowComponent, length = 6 }) {
                                     onKeyDown={(event) => handleKeyDown(event, index)}
                                     onChange={(event) => handleChange(event, index)}
                                     maxLength={1}
-                                    className='fw-bolder text-center'
+                                    className='fw-bolder text-center mt-1'
                                     style={{ border: '2px solid #FFFFFF', boxShadow: 'none', outline: 'none', background: 'rgba(255, 255, 255,0.1)', color: '#FFFFFF' }} />
                             ))}
                         </div>
                     </Form.Group>
-                    <p className='m-0 p-0 mt-4 mb-4  fw-bolder text-light'>Didn't receive the OTP? <Link className='text-light px-1' onClick={() => handleResend()}>Resend</Link></p>
+                    <div className='m-0 p-0 mt-4 mb-4 d-flex'>
+                        {countDown === 0 && <p className='m-0 p-0 gap-1 d-flex fw-bolder text-light'>Didn't receive the OTP?<Link className='text-light p-0 m-0' onClick={() => handleResend()}>Resend</Link></p>}
+                        {countDown > 0 && <p className='m-0 p-0 text-light fw-bolder'>{`Hurry! Your OTP is valid for the next ${count()} seconds`}</p>}
+                    </div>
                     <div className='mt-2 mb-0 d-flex w-100 gap-2'>
                         <Button className="bg-light fw-bolder text-center border-0" onClick={() => setShowComponent(0)} style={{ color: '#17414F', width: '30%'}}>Back</Button>
-                        <Button className="bg-light w-100 fw-bolder text-center border-0" type='submit' disabled={isLoading ? true : false} style={{ color: '#17414F' }}>{isLoading ? <><Spinner size='sm' className='mx-2 p-0' /> Verifying...</> : "Verify OTP"}</Button>    
+                        <Button className="bg-light w-100 fw-bolder text-center border-0" type='submit' disabled={isLoading ? true : false} style={{ color: '#17414F' }}>{isLoading ? <><Spinner size='sm' className='mx-1 p-0' /> Verifying...</> : "Verify OTP"}</Button>    
                     </div>
                 </div>
             </Form>
@@ -133,33 +158,12 @@ function ForgotOTP({ showComponent, setShowComponent, length = 6 }) {
 ingredients for high quality products!"/>
                 <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals" />
             </Helmet>
-            {/* <Row className='m-0 p-0 w-100 h-100 d-flex' style={{ background: "#E2F5FB" }}>
-                <Col className='w-100 h-100 m-0 d-flex justify-content-center align-items-center px-3 py-3 py-sm-3 py-sm-3 py-md-5 px-md-5 py-lg-5 py-xl-4 py-xxl-5'>
-                    <div className='w-100 m-0 p-0 flex-grow align-items-xl-center justify-content-xl-center rounded-2' style={{ borderColor: '#727272', background: '#17414F', borderRadius: '10px' }}>
-                        <Row className='d-flex w-100 h-100 m-0 p-0'>
-                            <Col className='m-0 d-xl-flex d-xl-flex d-lg-flex d-md-flex d-sm-none d-none' style={{ padding: '12px' }}>
-                                <div className='m-0 p-0 w-100 rounded-2 d-flex' style={{ backgroundImage: `url(${forgotBackground})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100% 100%' }}>
-                                    <div className='m-0 p-3 d-flex align-items-start justify-content-start gap-2 w-50'>
-                                        <img src={Image1} alt='Image1' className='img-fluid' style={{ height: '35px', width: '35px', borderRadius: '50%', border: '3px solid #17414F' }} />
-                                        <h5 style={{ color: '#FFFFFF' }} className='m-0 p-0 fw-bolder mt-1 mb-1'>Vitamins</h5>
-                                    </div>
-                                </div>
-                            </Col>
-                            <Col className='d-flex p-5 m-0 align-items-center justify-content-center'>
-                                <div className='flex-column h-100 m-0 p-0 w-100 px-md-4 px-lg-5 py-md-5 d-none d-md-flex justify-content-center' style={small ? smallStyle : largeStyle}>
-                                    {verifyForm()}
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </Col>
-            </Row> */}
             <Row className='m-0 p-0 d-flex w-100'>
                 <Col className='m-0 p-0 d-none d-md-flex' xxl={7} xl={7} lg={7} md={6} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
                     <div className='p-0 m-3 w-100 d-flex justify-content-center' style={{ position: 'relative' }}>
                         <img className="m-0 p-0 img-fluid w-100 h-100" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={forgotBackground} alt='heart-image' />
-                        <div className='m-0 p-0 p-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
-                            <p className='m-0 p-0 text-light fw-bolder fs-4'>Knowledge sharing and lifecycle guidence for holistic health</p>
+                        <div className='m-0 p-0 p-md-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
+                            <p className='m-0 p-0 text-light fw-bolder fs-4 w-75'>Knowledge sharing and lifecycle guidence for holistic health</p>
                             <div className='d-flex mt-3 mb-0 p-0 gap-3 w-100'>
                                 <div className='w-50 p-0 m-0 d-flex justify-content-start align-items-center overflow-hidden' style={{ border: "2px solid #FFFFFF", borderRadius: '20px' }}>
                                     <span className='m-0 fs-5 p-0 d-flex bg-light  h-100 align-items-center justify-content-center' style={{ width: "50%", borderRadius: '20px', color: '#003569' }}><GiLindenLeaf /></span>
