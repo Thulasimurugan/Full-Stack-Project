@@ -79,18 +79,9 @@ function ResetPassword({ showComponent, setShowComponent }) {
 
     const resetPasswordForm = () => (
         <>
-<<<<<<< HEAD
-            <h2 className='m-0 p-0 w-100 d-flex' style={{ color: '#FFFFFF' }}>Reset Password</h2>
-            <div className='m-0 p-0 my-lg-3 my-md-3 my-sm-3 my-3 w-100'>
-                <p className='m-0 p-0 mt-1 mt-xl-0 mt-sm-1 mt-lg-0 mt-md-0' style={{ color: '#FFFFFF' }}>Your new password must be different</p>
-                <p className='m-0 p-0 mt-1 mt-xl-0 mt-sm-1 mt-lg-0 mt-md-0' style={{ color: '#FFFFFF' }}>From previous used password.</p>
-            </div>
-            <Form className='p-0 m-0 flex-column' onSubmit={(event) => handleSubmit(event)}>
-=======
             <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: small ? "#003569" : '#FFFFFF' }}>Let's Get You a Fresh Password</h2>
             <p className='mt-2 mt-md-3 mb-0 w-100 d-flex fw-bolder' style={{ color: small ? "#003569" : '#FFFFFF' }}>Your new password must be different From previous used password.</p>
             <Form className='p-0 m-0 flex-column mt-3 mt-md-4' onSubmit={(event) => handleSubmit(event)}>
->>>>>>> main
                 <div className='m-0 p-0 w-100'>
                     <style>{customStyles}</style>
                     <Form.Group className='w-100 m-0 p-0 border-0'>
@@ -140,11 +131,7 @@ function ResetPassword({ showComponent, setShowComponent }) {
                 <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals" />
             </Helmet>
             <Row className='m-0 p-0 d-flex w-100'>
-<<<<<<< HEAD
-                <Col className='m-0 p-0 d-none d-md-flex' xxl={7} xl={7} lg={7} md={7} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
-=======
                 <Col className='m-0 p-0 d-none d-md-flex' xxl={7} xl={7} lg={7} md={6} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
->>>>>>> main
                     <div className='p-0 m-3 w-100 d-flex justify-content-center' style={{ position: 'relative' }}>
                         <img className="m-0 p-0 img-fluid w-100 h-100" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={heartImage} alt='heart-image' />
                         <div className='m-0 p-md-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
@@ -166,11 +153,7 @@ function ResetPassword({ showComponent, setShowComponent }) {
                     <div className='flex-column h-100 m-0 p-0 w-100 px-md-4 py-md-5 d-none d-md-flex justify-content-center' style={{ backgroundColor: '#003569', border: '3px solid #727272', borderLeft: 'None', borderTopRightRadius: '25px', borderBottomRightRadius: '25px' }}>
                         {resetPasswordForm()}
                     </div>
-<<<<<<< HEAD
-                    <div className='min-vh-100 w-100 d-flex justify-content-start align-items-end d-md-none m-0 p-4' style={{ backgroundImage: `url(${heartImage})`, backgroundPosition: 'center', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
-=======
                     <div className='min-vh-100 w-100 d-flex justify-content-start align-items-end d-md-none m-0 p-4' style={{ backgroundImage: `url(${heartBackground})`, backgroundPosition: 'center', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
->>>>>>> main
                         <div className='m-0 p-4 rounded-5 w-100' style={{ border: '3px solid #727272', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
                             {resetPasswordForm()}
                         </div>

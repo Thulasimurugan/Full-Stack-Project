@@ -21,15 +21,9 @@ function ForgotLayout() {
     return (
         <Container className='p-0 m-0 min-vh-100 d-flex align-items-md-center justify-content-md-center' fluid style={{ background: "#E2F5FB"}}>
             <Row className=' d-flex m-0 p-0 min-vh-100 w-100 px-md-5 align-items-md-center justify-content-md-center'>
-<<<<<<< HEAD
-                <Col className='d-flex m-0 p-0'>
+                <Col className='d-flex m-0 p-0 vh-75'>
                     {showComponent === 0 && <Forgot showComponent={showComponent} setShowComponent={setShowComponent} />}
                     {showComponent === 1 && <ForgotOTP showComponent={showComponent} setShowComponent={setShowComponent} />}
-=======
-                <Col className='d-flex m-0 p-0 vh-75'>
-                    {showComponent === 0 && <Forgot showComponent={showComponent} setShowComponent={setShowComponent} isEmaiSubmit={isEmaiSubmit} setEmailSubmit={setEmailSubmit} />}
-                    {showComponent === 1 && <ForgotOTP showComponent={showComponent} setShowComponent={setShowComponent} isEmaiSubmit={isEmaiSubmit} setEmailSubmit={setEmailSubmit}/>}
->>>>>>> main
                     {showComponent === 2 && <ResetPassword showComponent={showComponent} setShowComponent={setShowComponent} />}
                 </Col>
             </Row>

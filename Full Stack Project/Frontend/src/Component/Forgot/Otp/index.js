@@ -114,11 +114,7 @@ function ForgotOTP({ showComponent, setShowComponent, length = 6, isEmaiSubmit, 
 
     const verifyForm = () => (
         <>
-<<<<<<< HEAD
-            <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: '#FFFFFF' }}>Enter OTP to Continue</h2>
-=======
             <h2 className='m-0 p-0 w-100 d-flex fw-bolder' style={{ color: '#FFFFFF' }}>Let's Verify Your OTP!</h2>
->>>>>>> main
             <p className='m-0 p-0 mt-xl-3 mt-lg-3 mt-md-3 mt-2 fw-bolder w-100' style={{ color: '#FFFFFF' }}>Your reset password verification code is on its way! check your email and get started!</p> 
             <p className='mt-3 mb-3 mt-md-4 mb-md-4 p-0 fw-bolder d-flex w-100'><Link style={{ color: "#FFFFFF" }} to={'/'}>Wait, I remember my password.</Link></p>
             <Form className='p-0 m-0 flex-column' onSubmit={(event) => handleSubmit(event)}>
@@ -166,15 +162,9 @@ ingredients for high quality products!"/>
                 <Col className='m-0 p-0 d-none d-md-flex' xxl={7} xl={7} lg={7} md={6} style={{ backgroundColor: '#003569', border: '3px solid #727272', borderRight: 'None', borderTopLeftRadius: '25px', borderBottomLeftRadius: '25px' }} >
                     <div className='p-0 m-3 w-100 d-flex justify-content-center' style={{ position: 'relative' }}>
                         <img className="m-0 p-0 img-fluid w-100 h-100" style={{ borderTopLeftRadius: '20px', borderBottomLeftRadius: '20px' }} src={forgotBackground} alt='heart-image' />
-<<<<<<< HEAD
-                        <div className='m-0 p-0 py-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
-                            <p className='m-0 p-0 text-light fw-bolder fs-4 w-75'>Knowledge sharing and lifecycle guidence for holistic health</p>
-                            <div className='d-flex mt-3 mb-0 p-0 gap-3' style={{width: '70%'}}>
-=======
                         <div className='m-0 p-0 p-md-3 d-flex flex-column align-items-center justify-content-center' style={{ position: 'absolute', bottom: '5%', width: '95%', border: '3px solid #727272', borderRadius: '20px', backgroundColor: "rgba(255, 255, 255, 0.1)", backdropFilter: "blur(10px)" }}>
                             <p className='m-0 p-0 text-light fw-bolder fs-4 w-75'>Knowledge sharing and lifecycle guidence for holistic health</p>
                             <div className='d-flex mt-3 mb-0 p-0 gap-3 w-100'>
->>>>>>> main
                                 <div className='w-50 p-0 m-0 d-flex justify-content-start align-items-center overflow-hidden' style={{ border: "2px solid #FFFFFF", borderRadius: '20px' }}>
                                     <span className='m-0 fs-6 p-0 d-flex bg-light  h-100 align-items-center justify-content-center' style={{  width: "30%", borderRadius: '20px', color: '#003569' }}><GiLindenLeaf /></span>
                                     <p className='m-0 px-md-2 py-md-2 fw-bolder fs-6 w-100 text-center' style={{ color: '#FFFFFF' }}>Herbal Medicine</p>
