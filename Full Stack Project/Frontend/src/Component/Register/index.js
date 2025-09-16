@@ -209,7 +209,7 @@ function Register() {
                             <InputGroup.Text style={{ marginLeft: '0px', border: 'none', background: 'rgba(255, 255, 255, 0.1)', color: '#FFFFFF' }}>{visible ? <FaEyeSlash onClick={() => setVisible(false)} style={{ cursor: "pointer" }} /> : <FaEye onClick={() => setVisible(true)} style={{ cursor: "pointer" }} />}</InputGroup.Text>
                         </InputGroup>
                     </Form.Group>
-                    <Button className="w-100 mt-4 fw-bolder text-center border-0" id='registerButton' type='submit' style={{ color: small ? '#FFFFFF' : '#003569', backgroundColor: small ? '#003569' : '#FFFFFF' }}>{isLoading && <Spinner className="mx-1 p-0" size='sm' />}{isLoading ? "Creating..." : "Create account"}</Button>
+                    <Button className="w-100 mt-4 fw-bolder text-center border-0" type='submit' disabled={isLoading ? true : false} style={{ color: small ? '#FFFFFF' : '#003569', backgroundColor: small ? '#003569' : '#FFFFFF' }}>{isLoading && <Spinner className="mx-1 p-0" size='sm' />}{isLoading ? "Creating..." : "Create account"}</Button>
                     <p className='w-100 text-center mt-3 mb-2 fw-bolder' style={{ color: small ? '#003569' : '#FFFFFF' }}>Continue With Those of One</p>
                     <div className='w-100 m-0 p-0 d-flex justify-content-center align-items-center gap-xl-5 gap-lg-4 gap-md-3'>
                         {socialIcons.map((value, index) => (
@@ -225,13 +225,13 @@ function Register() {
     return (
         <>
             <Helmet>
-                <title>Login</title>
+                <title>Register</title>
                 <meta name="description" content="Only the best when you choose products offered on our platform - high quality
 ingredients for high quality products!"/>
                 <meta name="keywords" content="medical,medicine,tablet,hospital products,hospital,hospitals,vitamin,weight less,minerals" />
             </Helmet>
-            <Row className='m-0 p-md-5 p-0 d-flex w-100'>
-                <Col className='m-0 p-0 d-flex justify-content-md-center align-items-md-cente' xxl={6} xl={6} lg={6} md={6} sm={12} xs={12}>
+            <Row className='m-0 p-0 p-0 d-flex w-100'>
+                <Col className='m-0 p-0 d-flex justify-content-md-center align-items-md-center' xxl={6} xl={6} lg={6} md={6} sm={12} xs={12}>
                     <div className='position-relative w-100 d-flex d-md-none flex-column'>
                         <div className="w-100 m-0 p-0 d-flex align-items-center justify-content-start flex-column" style={{ height: '62%', borderBottomLeftRadius: '30%', borderBottomRightRadius: '30%', position: 'absolute', zIndex: 1, backgroundImage: `url(${heartImage})`, backgroundPosition: `center`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' }}>
                             <p className='m-0 p-0 fs-4 text-center text-light fw-bolder mt-5'>Welcome to AyurVitaCare</p>
@@ -243,7 +243,7 @@ ingredients for high quality products!"/>
                             </div>
                         </div>
                     </div>
-                    <div className='flex-column d-none d-md-flex m-0 p-0 w-100 h-100 px-5 align-items-center justify-content-center' style={{ color: '#FFFFFF', backgroundColor: "#003569", border: '3px solid #727272', borderRadius: "15px", borderTopRightRadius: '0', borderBottomRightRadius: '0', borderRight: "none" }} >
+                    <div className='flex-column d-none d-md-flex m-0 p-0 w-100 h-100 px-lg-5 py-md-5 px-md-4 align-items-center justify-content-center' style={{ color: '#FFFFFF', backgroundColor: "#003569", border: '3px solid #727272', borderRadius: "15px", borderTopRightRadius: '0', borderBottomRightRadius: '0', borderRight: "none" }} >
                         {registerForm()}
                     </div>
                 </Col>
