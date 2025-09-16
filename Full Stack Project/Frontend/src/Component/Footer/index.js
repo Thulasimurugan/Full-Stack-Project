@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { IoFastFood, IoFastFoodOutline, IoFitness, IoFitnessOutline, IoHomeOutline } from 'react-icons/io5';
 import { CiCircleInfo, CiMobile3 } from "react-icons/ci";
 import { Link, useLocation } from "react-router-dom";
 import Image1 from '../../Assets/Images/product-8-400x400.png.png';
+import Validator from "validator";
+import { popup } from "../Popup";
 import { MdCopyright, MdMedicalServices, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { GiHealthCapsule, GiMedicinePills, GiChemicalDrop, GiBrain } from "react-icons/gi";
 
 function Footer() {
     const location = useLocation();
+    const [isLoading, setIsLoading] = useState(false);
+    const [isSubscribed, setIsSubScribed] = useState(false);
+    const [subscribe, setSubScribe] = useState({
+        email: '',
+    })
+    const date = new Date();
+    const currentYear = date.getFullYear();
 
     const quickLinks = [
         {
@@ -67,13 +76,45 @@ function Footer() {
             quickName: 'Immunity',
             quickIcons: <IoFastFoodOutline className="fs-5" />
         },
-    ]
+    ];
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setSubScribe({
+            ...subscribe,
+            [name]: value,
+        });
+    }
+
+    const handleSubscribe = (event) => {
+        event.preventDefault();
+        setIsLoading(true);
+        if (Validator.isEmpty(subscribe.email)) {
+            setIsLoading(false);
+            popup.errorPopup({ msg: "We'll need your email to continue.", color: "#dc3545", popupIcon: "error" });
+        } else if (!Validator.isEmail(subscribe.email)) {
+            setIsLoading(false);
+            popup.errorPopup({ msg: "Enter a valid email (e.g.,name@example.com).", color: "#dc3545", popupIcon: "error" });
+        } else {
+            setTimeout(() => {
+                setIsLoading(false);
+                setIsSubScribed(true);
+                setSubScribe({
+                    email: '',
+                });
+                setTimeout(() => {
+                    setIsSubScribed(false);
+                }, 2000);
+            }, 3000);
+        }
+    }
+    
     return (
         <>
             <footer className="p-5 m-0 d-flex" style={{ background: '#003569' }}>
                 <Container fluid className="m-0 d-flex">
                     <Row className="m-0 p-0 w-100 d-flex flex-row">
-                        <Col className="m-0 p-0 d-flex align-items-center" xl={3} sm={12} md={6} lg={3}  xs={12}>
+                        <Col className="m-0 p-0 d-flex align-items-center" xl={3} sm={12} md={6} lg={3} xs={12}>
                             <div className="m-0 p-0 w-100">
                                 <div className="m-0 p-0 d-flex flex-row gap-2 w-100">
                                     <img
@@ -124,22 +165,26 @@ function Footer() {
                             <div className="mt-4 mt-lg-0 d-flex flex-column w-100">
                                 <p className="w-100 m-0 p-0 text-light fs-5 fw-bolder">Our Newsletter</p>
                                 <p className="mt-3 px-3 px-sm-0 d-flex text-light">Get health tips and exclusive offers delivered to your inbox</p>
-                                <Form className='flex-row m-0 px-3 px-sm-0 w-100'>
-                                    <Form.Group className='w-100 rounded-2' style={{ background: '#E2F5FB'}}>
+                                <Form className='flex-row m-0 px-3 px-sm-0 w-100' onSubmit={(event) => handleSubscribe(event)}>
+                                    <Form.Group className='w-100 rounded-2' style={{ background: '#E2F5FB' }}>
                                         <Form.Control
-                                            style={{ color: '#003569', boxShadow: 'none', outline: 'none' }}
+                                            style={{ boxShadow: 'none', outline: 'none' }}
                                             className='p-2 d-flex m-0 border-0 bg-transparent fw-bolder'
                                             placeholder='Enter your email'
+                                            name="email"
+                                            value={subscribe.email}
+                                            onChange={(event) => handleChange(event)}
                                         />
                                     </Form.Group>
-                                    <Button className='fw-bolder border-0 mt-2 px-4 py-2' style={{ background: 'white', color: '#17414F' }}>Subcribe</Button>
+                                    {isSubscribed && <p className="text-light mt-1 mb-0 p-0 d-flex">Thanks for Subscribing</p>}
+                                    <Button className='fw-bolder border-0 mt-2 px-4 py-2' type="submit" disabled={isLoading ? true : false} style={{ background: 'white', color: '#17414F' }}>{isLoading ? "Just a sec..." : "Subscribe for Free"}</Button>
                                 </Form>
                             </div>
                         </Col>
                         <Col className="mt-5 p-0">
                             <div className="m-0 p-0 d-flex w-100 justify-content-center gap-2">
-                                <p className="m-0 p-0 text-light fw-bolder"><MdCopyright className="fs-5"/> </p>
-                                <p className="m-0 p-0 d-flex text-light fw-bolder">2025 AyurVita Care Hospital. All rights reserved. | Privacy Policy | Terms of Service</p>
+                                <p className="m-0 p-0 text-light fw-bolder"><MdCopyright className="fs-5" /> </p>
+                                <p className="m-0 p-0 d-flex text-light fw-bolder">{`${currentYear} AyurVita Care Hospital. All rights reserved. | Privacy Policy | Terms of Service`}</p>
                             </div>
                         </Col>
                     </Row>

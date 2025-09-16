@@ -313,7 +313,7 @@ function Header() {
                     <div className='px-3 mt-4 d-flex'>
                         <div className="w-100">
                             <ul className="list-unstyled m-0">
-                                {menuDropDown.filter((values) => values.navUrl !== location.pathname).map((values, menuDropDownIndex) => (
+                                {menuDropDown.filter((values) => values.navUrl !== location.pathname && values.navUrl).length !== 0 ? menuDropDown.filter((values) => values.navUrl !== location.pathname && values.navUrl).map((values, menuDropDownIndex) => (
                                     <li className="mb-1" key={menuDropDownIndex}>
                                         <Link onClick={() => { handleMenuOpen(values.navUrl); handleChangeActiveDropDown(); }} className="text-decoration-none d-flex flex-row gap-2 mb-3 align-items-center" style={{ color: isTheme === "Dark" ? 'white' : '#003569' }}>
                                             <div className='d-flex m-0 p-1 rounded-3' style={{ background: isTheme === "Dark" ? "rgba(255, 255, 255,0.4)" : "rgba(0, 0, 0, 0.4)", border: isTheme === "Dark" ? "2px solid white" : '2px s' }}>
@@ -322,7 +322,7 @@ function Header() {
                                             <p className="d-flex m-0 p-0 fw-bolder">{values.navName}</p>
                                         </Link>
                                     </li>
-                                ))}
+                                )) : <p className='m-0 p-0 fw-bolder w-100 text-center' style={{color: "#FFFFFF" }}>Oops! No Menu available right now.</p>}
                             </ul>
                         </div>
                     </div>
@@ -375,7 +375,7 @@ function Header() {
                                                                 {navigation.navName} Menu
                                                             </p>
                                                             <ul className="list-unstyled m-0">
-                                                                {menuDropDown.filter((values) => values?.navUrl !== location.pathname).map((values, menuIndex) => (
+                                                                {menuDropDown.filter((values) => values?.navUrl !== location.pathname && values?.navUrl).length !== 0  ? menuDropDown.filter((values) => values?.navUrl !== location.pathname && values?.navUrl).map((values, menuIndex) => (
                                                                     <li className="mb-1" key={menuIndex}>
 
                                                                         <Link to={values.navUrl} onClick={() => { handleChangeActiveDropDown(); window.location.href = `${values.navUrl}` }} className="text-decoration-none d-flex flex-row gap-2" style={{ color: '#003569' }}>
@@ -383,7 +383,7 @@ function Header() {
                                                                             {values.navName}
                                                                         </Link>
                                                                     </li>
-                                                                ))}
+                                                                )) : <p className='m-0 p-0 fw-bolder w-100' style={{color: "#003569" }}>Oops! No Menu available right now.</p>}
                                                             </ul>
                                                         </div>
                                                     </div>

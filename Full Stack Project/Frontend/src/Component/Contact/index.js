@@ -219,7 +219,7 @@ ingredients for high quality products!"/>
             <Row className='d-flex m-0 p-0 mt-5 px-5'>
                 <Col className='d-flex m-0 p-0 mt-3 mt-xl-5 mt-lg-5 mt-md-5 px-md-2' xl={4} lg={4} md={4}>
                     <Form.Group className='w-100 m-0 p-0 border-0'>
-                        <Form.Label>Your Name <span style={{color:'red'}}>*</span></Form.Label>
+                        <Form.Label>Your Name <span className="m-0 p-0 fw-bolder" style={{color:'red'}}>*</span></Form.Label>
                         <Form.Control 
                         type='text'
                         name='username'
@@ -232,7 +232,7 @@ ingredients for high quality products!"/>
                 </Col>
                 <Col className='d-flex m-0 p-0 px-0 mt-3 mt-xl-5 mt-lg-5 mt-md-5 px-md-2' xl={4} lg={4} md={4}>
                     <Form.Group className='w-100 m-0 p-0 border-0'>
-                        <Form.Label>Email Address <span style={{color:'red'}}>*</span></Form.Label>
+                        <Form.Label>Email Address <span className="m-0 p-0 fw-bolder" style={{color:'red'}}>*</span></Form.Label>
                         <Form.Control 
                         type="text"
                         name='email'
@@ -245,7 +245,7 @@ ingredients for high quality products!"/>
                 </Col>
                 <Col className='d-flex m-0 p-0 px-0 px-md-2 mt-3 mt-xl-5 mt-lg-5 mt-md-5' xl={4} lg={4} md={4}>
                     <Form.Group className='w-100 m-0 p-0 border-0'>
-                        <Form.Label>Phone Number <span style={{color:'red'}}>*</span></Form.Label>
+                        <Form.Label>Phone Number <span className="m-0 p-0 fw-bolder" style={{color:'red'}}>*</span></Form.Label>
                         <div className='w-100 mt-1 m-0 p-0 d-flex'>
                         <PhoneInput 
                             country={'in'}
@@ -264,7 +264,7 @@ ingredients for high quality products!"/>
                 <Col className='d-flex m-0 p-0 px-md-2 mt-3' xl={12} lg={12}>
                     <div className="flex-column w-100 m-0 p-0">
                         <Form.Group className='w-100 m-0 p-0 border-0'>
-                            <Form.Label>Message <span style={{color:'red'}}>*</span></Form.Label>
+                            <Form.Label>Message <span className="m-0 p-0 fw-bolder" style={{color:'red'}}>*</span></Form.Label>
                             <Form.Control
                             as="textarea"
                             rows={2}
